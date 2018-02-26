@@ -1,22 +1,37 @@
-# body_shaming_project
+﻿# body_shaming_project
+
+Maquette: https://wireframe.cc/kWh6Dg
 
 
 USER STORIES
 
-*En tant que visiteur, je peux m'inscrire sur le forum et avoir un profil utilisateur.
+*En tant qu'admin, je peux bannir un utilisateur du site.
 
-*En tant que visiteur, je peux accéder aux differents post du forum.
+*En tant qu'admin, je valide les topics avant leurs publications afin d'éviter les topics hors sujet.
 
-*En tant que visiteur, je peux consulter les profils des utilisateurs.
+*En tant qu'admin, je peux supprimer une réponse afin d'éviter les réponses innapropriées.
 
-En tant qu'utilisateur, je peux créer un topic.
+*En tant que visiteur, je peux m'inscrire sur le forum pour accéder aux fonctionnalités d'utilisateur.
 
-En tant qu'utilisateur, je peux éditer mon topic ou le supprimer.
+*En tant que visiteur, je peux accéder aux differents post du forum pour choisir celui auquel je veux accéder.
 
-En tant qu'utilisateur, je peux répondre à un post.
+*En tant que visiteur, je peux consulter les profils des utilisateurs pour avoir plus d'informations sur eux.
 
-En tant qu'utilisateur, je peux éditer ma réponse ou la supprimer.
 
-En tant qu'utilisateur, j'ai une messagerie privée et je peux contacter d'autres utilisateurs.
+*En tant qu'utilisateur, j'ai un profil utilisateur pour partager des informations public sur ma personne.
 
-En tant qu'utilisateur, je peux citer un autre utilisateur sur un post.
+*En tant qu'utilisateur, je peux créer des topic pour pouvoir les partager avec les autres visiteurs et utilisateurs du site.
+
+*En tant qu'utilisateur, je peux éditer un de mes topics pour corriger des erreurs ou ajouter des informations suuplémentaires.
+
+*En tant qu'utilisateur, je peux supprimer un de mes topics.
+
+*En tant qu'utilisateur, je peux répondre à un post pour pouvoir y répondre ou partager mon avis.
+
+*En tant qu'utilisateur, je peux éditer une de mes réponses pour pouvoir la corriger ou rajouter du contenu.
+
+*En tant qu'utilisateur, je peux supprimer une de mes réponse.
+
+*En tant qu'utilisateur, j'ai une messagerie privée pour pouvoir contacter d'autres utilisateurs et être contacté.
+
+*En tant qu'utilisateur, je peux citer un autre utilisateur sur un post.
