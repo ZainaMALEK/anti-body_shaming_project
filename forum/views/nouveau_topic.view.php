@@ -18,10 +18,12 @@
 			<tr>
 				<td>Catégorie</td>
 				<td>
-					<select>
-						<option>Témoignages</option>
-						<option>Confiance en soi</option>
+					<select name="categorie_selected"><?php while ($categories = $categorie->fetch()) 
+					{?>
+						<option><?=$categories['name']?></option>
+			  <?php } ?>
 					</select>
+					
 				</td>
 			</tr>
 			<tr>
@@ -36,7 +38,8 @@
 				<td colspan="2"><input type="submit" name="topic_submit"></td>
 			</tr>
 
-			<?php if(isset($error)) { ?>
+			<?php if(isset($error)) 
+			   { ?>
 
 			<tr>
 				<td colspan="2">

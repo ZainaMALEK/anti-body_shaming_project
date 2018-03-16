@@ -1,7 +1,16 @@
 <?php
 session_start();
 require ('config.php');
-require('../views/nouveau_topic.view.php');
+
+
+$categorie_selected = $_POST['categorie_selected'];
+
+$categorie = $bdd->query('SELECT * FROM categories');
+
+$req_categ = $bdd->query('SELECT * FROM categories WHERE name="'.$categorie_selected.'"');
+$categ= $req_categ->fetch();
+$id_categ=$categ['id'];
+
 
 if(isset($_POST['topic_submit']))
 {
@@ -21,14 +30,18 @@ if(isset($_POST['topic_submit']))
 				$notif_mail = 0;
 			}
 
-			$ins = $bdd->prepare('INSERT INTO f_topics(sujet, contenu, notif_creator, created_at ) VALUES(?,?,?,NOW())');
-			$ins ->execute(array($sujet,$contenu,$notif_mail));
+			$ins = $bdd->prepare('INSERT INTO f_topics(sujet,id_categorie,contenu, notif_creator,created_at ) VALUES(?,?,?,?,NOW())');
+
+			$ins->execute(array($sujet,$id_categ,$contenu,$notif_mail));
+
 		}
-		else {
-			$topic_error = "Votre titre ne peut dépasser 100 caractéres";
+		else 
+		{
+			$topic_error = "Votre titre ne peut dépasser 100 caractères";
 		}
 	}
 }
 
+require('../views/nouveau_topic.view.php');
 
 ?>

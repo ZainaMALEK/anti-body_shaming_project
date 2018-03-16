@@ -19,8 +19,8 @@
 
 		{?>
 		<tr>
-			<td ><?= $topics['sujet'] ?></td>
-			<td ><?= $categories['name'] ?></td>
+			<td><?= $topics['sujet'] ?></td>
+			<td><?= $categories['name'] ?></td>
 			<td>Nombres de réponses</td>
 			<td>Time et auteur de la dernière réponse</td>
 			<td><?= $topics['created_at'] ?></td>
