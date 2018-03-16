@@ -257,7 +257,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+userName",
+											"text": "+user_name",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2343,7 +2343,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "comment",
+											"text": "answer",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2842,9 +2842,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 433,
+									"left": 426,
 									"top": 465,
-									"width": 0,
+									"width": 14.82177734375,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.5235987755982988,
@@ -2854,6 +2854,7 @@
 									},
 									"edgePosition": 2,
 									"underline": false,
+									"text": "+1",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5,
 									"wordWrap": false
@@ -2922,7 +2923,7 @@
 									},
 									"edgePosition": 2,
 									"underline": false,
-									"text": "0..*",
+									"text": "1",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5,
 									"wordWrap": false
@@ -3025,7 +3026,7 @@
 									},
 									"edgePosition": 0,
 									"underline": false,
-									"text": "1",
+									"text": "0..*",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5,
 									"wordWrap": false
@@ -3574,7 +3575,7 @@
 											"containerExtending": false,
 											"left": 45,
 											"top": 79,
-											"width": 63.2353515625,
+											"width": 67.5517578125,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -3646,7 +3647,7 @@
 									"containerExtending": false,
 									"left": 40,
 									"top": 72,
-									"width": 73.2353515625,
+									"width": 77.5517578125,
 									"height": 25,
 									"autoResize": false,
 									"stereotypeLabel": {
@@ -3692,7 +3693,7 @@
 											"containerExtending": false,
 											"left": 45,
 											"top": 102,
-											"width": 63.2353515625,
+											"width": 67.5517578125,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -3721,7 +3722,7 @@
 											"containerExtending": false,
 											"left": 45,
 											"top": 117,
-											"width": 63.2353515625,
+											"width": 67.5517578125,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -3750,7 +3751,7 @@
 											"containerExtending": false,
 											"left": 45,
 											"top": 132,
-											"width": 63.2353515625,
+											"width": 67.5517578125,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -3771,7 +3772,7 @@
 									"containerExtending": false,
 									"left": 40,
 									"top": 97,
-									"width": 73.2353515625,
+									"width": 77.5517578125,
 									"height": 53,
 									"autoResize": false
 								},
@@ -3795,7 +3796,7 @@
 									"containerExtending": false,
 									"left": 40,
 									"top": 150,
-									"width": 73.2353515625,
+									"width": 77.5517578125,
 									"height": 10,
 									"autoResize": false
 								},
@@ -3859,8 +3860,8 @@
 							"containerExtending": false,
 							"left": 40,
 							"top": 72,
-							"width": 73.2353515625,
-							"height": 88,
+							"width": 77.5517578125,
+							"height": 103,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
@@ -4335,7 +4336,7 @@
 								"$ref": "AAAAAAFh0chwfU8EjgQ="
 							},
 							"lineStyle": 1,
-							"points": "113:115;235:116"
+							"points": "118:121;235:116"
 						},
 						{
 							"_type": "UMLAssociationView",
@@ -4970,7 +4971,7 @@
 									},
 									"edgePosition": 2,
 									"underline": false,
-									"text": "0..*",
+									"text": "1",
 									"horizontalAlignment": 2,
 									"verticalAlignment": 5,
 									"wordWrap": false
@@ -7526,7 +7527,7 @@
 								"visibility": "public",
 								"navigable": true,
 								"aggregation": "none",
-								"multiplicity": "0..*",
+								"multiplicity": "1",
 								"isReadOnly": false,
 								"isOrdered": false,
 								"isUnique": false,
@@ -7629,11 +7630,10 @@
 							"_parent": {
 								"$ref": "AAAAAAFhzqeRoY5iTS8="
 							},
-							"name": "userName",
+							"name": "user_name",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -7907,7 +7907,7 @@
 								"visibility": "public",
 								"navigable": true,
 								"aggregation": "none",
-								"multiplicity": "0..*",
+								"multiplicity": "1",
 								"isReadOnly": false,
 								"isOrdered": false,
 								"isUnique": false,
@@ -7926,7 +7926,7 @@
 								"visibility": "public",
 								"navigable": true,
 								"aggregation": "none",
-								"multiplicity": "1",
+								"multiplicity": "0..*",
 								"isReadOnly": false,
 								"isOrdered": false,
 								"isUnique": false,
@@ -8755,7 +8755,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "comment",
+					"name": "answer",
 					"visibility": "public",
 					"attributes": [
 						{
@@ -9228,6 +9228,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
