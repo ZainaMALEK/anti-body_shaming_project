@@ -5,6 +5,10 @@
 	<meta charset="utf-8">
 </head>
 <body>
+<?php
+	if ($_GET['id'] ==$_SESSION['id']) 
+	{	?>
+
 	<form method="POST" action="nouveau_topic.php">
 		<table>
 			<tr class="header">
@@ -51,6 +55,11 @@
 
 		</table>
 	</form>
+<?php
+}
+else
+{echo "Veuillez vous connecter pour pouvoir créer un topic";}
+?>	
 
 </body>
 </html>
