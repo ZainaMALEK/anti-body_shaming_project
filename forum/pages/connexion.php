@@ -1,8 +1,10 @@
 <?php
 session_start();
 
-require ('config.php');
+
+require __DIR__.'/../models/DBConnect.php';
 require ('../views/connexion.view.php');
+$bdd = DBConnect();
 
 if (isset($_POST['formconnexion'])) 
 	{

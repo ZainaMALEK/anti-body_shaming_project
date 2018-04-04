@@ -1,6 +1,14 @@
 <?php
-require ('config.php');
-require ('../views/inscription.view.php');
+
+
+
+
+
+require ('../models/modelfacture.php');
+
+
+
+
 
 if (isset($_POST['forminscription'])) 
 {
@@ -21,11 +29,16 @@ if (isset($_POST['forminscription']))
 
 				if ($mdp==$mdp2)
 				{
-					$insertuser = $bdd->prepare('INSERT INTO users (username, email, password) VALUES (?,?,?)');
-					$insertuser->execute(array($pseudo, $mail, $mdp));
-					$erreur="Votre compte a bien été créé";
+					
+                    createUneFacture($pseudo, $mail, $mdp);
 
+					/*$insertuser = $bdd->prepare('INSERT INTO users (username, email, password) VALUES (?,?,?)');
+					$insertuser->execute(array($pseudo, $mail, $mdp));*/
+					
+					$erreur="Votre compte a bien été créé";
 				}
+
+				
 				else
 				{
 					$erreur = "Vos mots de passe ne sont pas identiques";
@@ -51,3 +64,7 @@ if (isset ($erreur))
 {
 	echo $erreur;
 }
+require ('../views/inscription.view.php');
+
+
+

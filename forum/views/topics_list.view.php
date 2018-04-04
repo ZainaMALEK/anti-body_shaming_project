@@ -19,7 +19,11 @@
 
 		{?>
 		<tr>
-			<td><?= $topics['sujet'] ?></td>
+			<td>
+				<a href="topic.php">
+				<?= $topics['sujet'] ?>
+				</a>	
+			</td>
 			<td><?= $categories['name'] ?></td>
 			<td>Nombres de réponses</td>
 			<td>Time et auteur de la dernière réponse</td>

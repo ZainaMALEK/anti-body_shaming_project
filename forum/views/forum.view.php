@@ -5,7 +5,10 @@
 	<title>The anti body shaming forum</title>
 </head>
 <body>
-	<h1>Page d'accueil du forum</h1>
+	<h1>Page d'accueil du forum</h1><br>
+	<a href="connexion.php">Se connecter</a><br>
+	<a href="inscription.php">S'inscrire</a><br>
+	<a href="topics_list.php">Voir tous les topics</a><br><br>
 	<table class="forum">
 		<tr class="header">
 			<th class="main">Catégories</th>
@@ -17,7 +20,7 @@
 		<tr>
 			<td class="main">
 
-				<h4><?= $c['name'] ?></h4>
+				<h4><a href=""><?= $c['name'] ?></a></h4>
 			</td>
 			<td class="sub-info">Nombres de topics</td>
 			<td class="sub-info">05.03.2018 à 17h18</td>

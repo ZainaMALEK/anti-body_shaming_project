@@ -8,7 +8,7 @@
 	<div align="center">
 
 		<h1>Formulaire d'inscription</h1>
-		<form method="POST" action="../php/inscription.php">
+		<form method="POST" action="">
 			<table>
 				<tr>
 					<td align="right">Pseudo</label></td>

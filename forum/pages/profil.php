@@ -1,6 +1,7 @@
 <?php
 session_start();
-require ('config.php');
+require __DIR__.'/../models/DBConnect.php';
+$bdd = DBConnect();
 
 
 if (isset($_GET['id']) AND $_GET['id']>0) 

@@ -9,7 +9,7 @@
 	if ($_GET['id'] ==$_SESSION['id']) 
 	{	?>
 
-	<form method="POST" action="nouveau_topic.php">
+	<form method="POST" action="">
 		<table>
 			<tr class="header">
 				<th>Nouveau topic</th>

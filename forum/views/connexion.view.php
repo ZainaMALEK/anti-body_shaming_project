@@ -9,7 +9,7 @@
 
 		<h1>Connexion</h1>
 
-		<form method="POST" action="../php/connexion.php">
+		<form method="POST" action="">
 			<input type="mail" name="mailconnect" placeholder="email">
 			<input type="password" name="mdpconnect" placeholder="mot de passe">
 			<input type="submit" name="formconnexion" value="Se connecter">
