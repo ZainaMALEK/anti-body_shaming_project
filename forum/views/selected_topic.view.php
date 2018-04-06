@@ -4,7 +4,7 @@
 	<title>Topic selectionné</title>
 </head>
 <body>
-	<h1></h1>
+	<h1>Topic selectionné</h1>
 	<p></p>
 
 </body>

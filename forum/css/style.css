@@ -1,0 +1,17 @@
+.forum
+{
+	margin: auto;
+	border-style: solid;
+}
+.header_forum
+{
+text-align: center;
+
+}
+body {
+  margin:0;
+  padding:0;
+  background: url("img/cesar-couto-420976-unsplash.jpg") no-repeat center fixed; 
+  background-size: 100% 100%;
+}
+

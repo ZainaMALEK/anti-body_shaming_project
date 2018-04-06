@@ -2,13 +2,16 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<title>The anti body shaming forum</title>
 </head>
 <body>
+	<div class="header_forum">
 	<h1>Page d'accueil du forum</h1><br>
 	<a href="connexion.php">Se connecter</a><br>
 	<a href="inscription.php">S'inscrire</a><br>
 	<a href="topics_list.php">Voir tous les topics</a><br><br>
+    </div>
 	<table class="forum">
 		<tr class="header">
 			<th class="main">Catégories</th>
