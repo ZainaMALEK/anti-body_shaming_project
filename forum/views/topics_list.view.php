@@ -20,14 +20,14 @@
 		{?>
 		<tr>
 			<td>
-				<a href="topic.php">
-				<?= $topics['sujet'] ?>
+				<a href="selected_topic.php?sujet=<?=$topics['sujet'];?>&id=<?=$topics['id'];?>">
+				<?= $topics['sujet'] ;?>
 				</a>	
 			</td>
-			<td><?= $categories['name'] ?></td>
+			<td><?= $categories['name']; ?></td>
 			<td>Nombres de réponses</td>
 			<td>Time et auteur de la dernière réponse</td>
-			<td><?= $topics['created_at'] ?></td>
+			<td><?= $topics['created_at']; ?></td>
 			
 		</tr>
 	  <?php }?>

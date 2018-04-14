@@ -8,10 +8,12 @@
 text-align: center;
 
 }
-body {
-  margin:0;
-  padding:0;
-  background: url("img/cesar-couto-420976-unsplash.jpg") no-repeat center fixed; 
-  background-size: 100% 100%;
+.header-title {
+	background-image: url("img/titre2.png"); 
+	background-size: cover;
+	height: 500px;
+	width: 100% 100%
 }
-
+.btn {
+	
+}
