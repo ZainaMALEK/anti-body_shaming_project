@@ -12,10 +12,9 @@
 				<td>Sujet</td>
 				<td>Contenu</td>
 			</tr>
-			<?php $selected_topic=$topic ?>
-			<tr>
-				<td><?=$selected_topic['sujet']; ?></td>
-				<td><?=$selected_topic['contenu']; ?></td>
+						<tr>
+				<td><?=$topic['sujet']; ?></td>
+				<td><?=$topic['contenu']; ?></td>
 			
 			</tr>
 			<?php	?>

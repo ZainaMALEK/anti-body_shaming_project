@@ -10,7 +10,8 @@
 	{
 	?>
 	<a href="#">Editer mon profil</a>	
-	<a href="nouveau_topic.php?id=<?=$_SESSION['id']?>">Créer un topic</a>	
+	<!--a href="nouveau_topic.php?id=<?=$_SESSION['id']?>">Créer un topic</a-->	
+	<a href="newTopic.php?id=<?=$_SESSION['id']?>">Créer un topic</a>
 	<a href="deconnexion.php">Me déconnecter</a>
 
 	<?php

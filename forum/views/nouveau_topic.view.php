@@ -16,20 +16,14 @@
 				<th></th>
 			</tr>
 			<tr>
-				<td>Sujet</td>
-				<td><input type="text" name="topic_sujet" maxlength="10  0"></td>
+				<td>Categorie</td>
+				<td><?=$categorie ?></td>
 			</tr>
 			<tr>
-				<td>Catégorie</td>
-				<td>
-					<select name="categorie_selected"><?php while ($categories = $categorie->fetch()) 
-					{?>
-						<option><?=$categories['name']?></option>
-			  <?php } ?>
-					</select>
-					
-				</td>
+				<td>Sujet</td>
+				<td><input type="text" name="topic_sujet" maxlength="100"></td>
 			</tr>
+		
 			<tr>
 				<td>Message</td>
 				<td><textarea name="topic_contenu"></textarea></td>

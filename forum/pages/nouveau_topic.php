@@ -1,63 +1,83 @@
 <?php
 session_start();
 
-if (isset($_GET['id'])==$_SESSION['id']) {
-
-	require __DIR__.'/../models/DBConnect.php';
-	require __DIR__.'/../models/TopicManager.php';
-	require __DIR__.'/../models/CategoryManager.php';
-
-	$categorie_selected= '';
-	$_POST['categorie_selected']='';
-
-	$bdd= DBConnect();
+require __DIR__.'/../models/CategoryManager.php';
 
 
-	$categorie_selected = $_POST['categorie_selected'];
+if (isset($_GET['categorie']) AND !empty($_GET['categorie']))
+{
+	$get_categorie=htmlspecialchars($_GET['categorie']);
 
-	$categorie = getCategory();
+	$category = CategoryManager::selectCategory($get_categorie);
 
-	$req_categ = $bdd->query('SELECT * FROM categories WHERE name="'.$categorie_selected.'"');
-	$categ= $req_categ->fetch();
-	$id_categ=$categ['id'];
+    $catExist=$category->rowCount();
+	
+	$cat =$category->fetch();
 
 
-	if(isset($_POST['topic_submit']))
+	if ($catExist==1) 
 	{
-		if(isset($_POST['topic_sujet'], $_POST['topic_contenu']))
+		
+
+		$categorie= $cat['cat_name'];
+
+		if (isset($_GET['id']) AND !empty($_GET['id']))
 		{
+			require('../views/nouveau_topic.view.php');
 
-			$sujet=htmlspecialchars($_POST['topic_sujet']);
-			$contenu=htmlspecialchars($_POST['topic_contenu']);
-
-			if (strlen($sujet) <=100) 
+			if (isset($_GET['id'])==$_SESSION['id']) 
 			{
-			
 
-				if( isset($_POST['topic_mail'])){
-					$notif_mail = 1;
-				}else {
-					$notif_mail = 0;
+				
+				require __DIR__.'/../models/TopicManager.php';
+				
+				$idUser = $_GET['id'];
+
+				if(isset($_POST['topic_submit']))
+				{
+					if(isset($_POST['topic_sujet'], $_POST['topic_contenu']))
+					{
+
+						$sujet=htmlspecialchars($_POST['topic_sujet']);
+						$contenu=htmlspecialchars($_POST['topic_contenu']);
+
+						if (strlen($sujet) <=100) 
+						{
+						
+
+							if( isset($_POST['topic_mail'])){
+								$notif_mail = 1;
+							}else {
+								$notif_mail = 0;
+							}
+							// fonction pr insertion
+
+							TopicManager::insertTopic($sujet, $contenu, $get_categorie,$idUser, $notif_mail);
+
+						}
+						else 
+						{
+							$topic_error = "Votre titre ne peut dépasser 100 caractères";
+						}
+					}
 				}
-
-				$ins = $bdd->prepare('INSERT INTO f_topics(sujet,id_categorie,contenu, notif_creator,created_at ) VALUES(?,?,?,?,NOW())');
-
-				$ins->execute(array($sujet,$id_categ,$contenu,$notif_mail));
-				echo "Votre topic a bien été créé";
-
+	
 			}
-			else 
-			{
-				$topic_error = "Votre titre ne peut dépasser 100 caractères";
-			}
+		
 		}
+		else
+		{
+			echo "Vos devez vous connecter pour pouvoir poster un topic";
+		}
+
 	}
-
-require('../views/nouveau_topic.view.php');
-
+	else
+	{
+		echo "Cette catégorie n'existe pas";
+	}
 	
 }
 else
 {
-	echo "Vos devez vous connecter pour pouvoir poster un topic";
+	echo "Aucune catégorie définie";
 }
