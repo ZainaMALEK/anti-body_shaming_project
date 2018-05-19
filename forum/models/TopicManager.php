@@ -96,4 +96,16 @@ class TopicManager
 		$ins->execute(array($sujet,$contenu,$get_categorie,$idUser,$notif_mail));
 		return $ins;
 	}
+
+	public static function selectedTopic($topic_id, $get_categorie)
+	{
+	$bdd= new PDO('mysql:host=localhost;dbname=body_shaming_forum;charset=utf8','root','root');
+	$topicselected= $bdd->prepare('SELECT * FROM f_topics WHERE id_topic=:id_topic AND id_categorie=:id_categorie');
+	$topicselected->bindParam(':id_topic', $topic_id);
+	$topicselected->bindParam(':id_categorie', $get_categorie);
+	$topicselected->execute();
+	//$topicselected->execute(array($topic_id,$get_categorie));
+	$topic= $topicselected->fetch();
+	return $topic;
+	}
 }

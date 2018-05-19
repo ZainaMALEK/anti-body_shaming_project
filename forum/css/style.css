@@ -1,10 +1,7 @@
-.forum
-{
-	margin: auto;
-	border-style: solid;
-}
-.header_forum
-{
-text-align: center;
 
+table.forum tr:nth-child(odd){
+	background: #FAFAFA;
+
+	background-image: url('img/mona-eendra-208388-unsplash.jpg');
 }
+

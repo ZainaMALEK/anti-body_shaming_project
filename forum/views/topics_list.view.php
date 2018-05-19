@@ -20,7 +20,7 @@
 		</tr>
 
 		<?php 
-		var_dump($topicList);
+		
 		
 		foreach ($topicList as $topics) 
 		
@@ -28,7 +28,7 @@
 		<tr>
 			<td>
 				<!--a href="selected_topic.php?sujet=<?=$topics['sujet'];?>&id=<?=$topics['id'];?>"-->
-				<a href="selected_topic.php?categorie=<?=$categorie?>&id=<?=$topics['id_topic'];?>">
+				<a href="selected_topic.php?user=<?=$user_id?>&categorie=<?=$categorie?>&topic_id=<?=$topics['id_topic'];?>">
 				<?= $topics['sujet'] ;?>
 				</a>
 			</td>

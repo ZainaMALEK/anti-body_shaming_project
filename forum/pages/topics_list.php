@@ -5,6 +5,10 @@ require __DIR__.'/../models/TopicManager.php';
 require __DIR__.'/../models/CategoryManager.php';
 
 
+$user_id= htmlspecialchars($_SESSION['id']);
+
+
+
 if (isset($_GET['id_categorie']) AND !empty($_GET['id_categorie'])) 
 {
 	$categorie = htmlspecialchars($_GET['id_categorie']);

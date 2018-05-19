@@ -1,70 +1,43 @@
 <?php
+session_start();
+require __DIR__.'/../models/AnswersManager.php';
+require __DIR__.'/../models/User.php';
+require __DIR__.'/../models/TopicManager.php';
 
-/*if (isset($_GET['sujet'],$_GET['id']) AND !empty($_GET['sujet']) AND !empty($_GET['id']))
-{	
-	$get_id = htmlspecialchars($_GET['id']);
-	$get_sujet = htmlspecialchars($_GET['sujet']);
+$user_id = htmlspecialchars($_GET['user']);
+$topic_id = htmlspecialchars($_GET['topic_id']);
+$answers = AnswersManager::getAllAnswers($topic_id);
+$user_info = User::userInfo($user_id);
+        
 
-	$bdd= new PDO('mysql:host=localhost;dbname=body_shaming_forum;charset=utf8','root','root');
-	$titleselected= $bdd->prepare('SELECT sujet FROM f_topics WHERE id=?');
-	$titleselected->execute(array($get_id));
-	$title_selected= $titleselected->fetch()['sujet'];
-
-	if ($get_sujet==$title_selected) 
-
-	{
-	require __DIR__.'/../models/TopicManager.php';
+if ($_GET['user']==$_SESSION['id'])
+{
 	
+	if (isset($_POST['topic_answer'],$_POST['topic_answer_submit']) AND !empty($_POST['topic_answer'])) {
 		
-		$topic = $bdd->prepare('SELECT * FROM f_topics WHERE id=?');
-		$topic->execute(array($get_id));
-		$topic= $topic->fetch();
-	require __DIR__.'/../views/selected_topic.view.php';
+		$topic_answer = htmlspecialchars($_POST['topic_answer']);
+
+        AnswersManager::createAnswer($user_id,$topic_id,$topic_answer);    
+
 	}
 	else
-	 {
-	 	echo "erreur";
-	 }
+	{
+		$answer_msg = "Votre réponse ne peut pas être vide...";
+	}
 }
-
 else
-
 {
-	die("Ce topic n'existe pas");
-
+	$answer_msg = "Veuillez vous connecter pour pouvoir répondre à un topic";
 }
-*/
 
-
-if (isset($_GET['id'], $_GET['categorie']) AND!empty($_GET['id'])AND !empty($_GET['categorie']))
+if (isset($_GET['topic_id'], $_GET['categorie']) AND!empty($_GET['topic_id'])AND !empty($_GET['categorie']))
 {	
-	$get_id = htmlspecialchars($_GET['id']);
-
+	
 	$get_categorie = htmlspecialchars($_GET['categorie']);
 	
-
+    $topic= TopicManager::selectedTopic($topic_id, $get_categorie);
 	
-	$bdd= new PDO('mysql:host=localhost;dbname=body_shaming_forum;charset=utf8','root','root');
 	
-	$topicselected= $bdd->prepare('SELECT * FROM f_topics WHERE id_topic=? AND id_categorie=?');
-	$topicselected->execute(array($get_id,$get_categorie));
-	$topic= $topicselected->fetch();
-
-
-	require __DIR__.'/../views/selected_topic.view.php';
-
-	/*if ($get_id==$topic['id']) 
-
-	{
-	
-		require __DIR__.'/../views/selected_topic.view.php';
-	}
-
-	else
-	{
-	 	echo "erreur";
-	}*/
-
 }
 
 else
@@ -73,3 +46,5 @@ else
 	die("Ce topic n'existe pas");
 
 }
+
+require __DIR__.'/../views/selected_topic.view.php';

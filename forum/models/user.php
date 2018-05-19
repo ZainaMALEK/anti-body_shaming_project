@@ -1,7 +1,7 @@
 <?php
 
 
-class user
+class User
 
 {
 	
@@ -64,13 +64,14 @@ class user
 		
 	
 
-	public static function profil_user()
+	public static function userInfo($user_id)
 
 	{
 
-	$getid = intval($_GET['id']);
-	$requete_user = self::prepareStatement('SELECT * FROM users WHERE id =?');
-	$requete_user->execute(array($getid));
+	//$get_id = intval($_GET['id']);
+	$requete_user = self::prepareStatement('SELECT * FROM users WHERE id =:user_id');
+	$requete_user->bindParam(':user_id',$user_id);
+	$requete_user->execute();
 	$user_info = $requete_user->fetch();
 	return $user_info;
 	
