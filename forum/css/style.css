@@ -1,7 +1,54 @@
 
 table.forum tr:nth-child(odd){
 	background: #FAFAFA;
-
-	background-image: url('img/mona-eendra-208388-unsplash.jpg');
 }
+.home_img{
+	background-image: url('img/melanie-wasser-233297-unsplash.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+    width:100%;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+
+	
+
+	
+}
+
+.home_page {
+	text-align: center;
+    font-family: 'Lora', serif;
+    font-size: 13px;
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+	position: fixed;
+	height: 600px;
+
+
+}
+
+.home_nav {
+	background: black;
+	padding-top: 70px;
+	
+}
+.nav a {
+	color:white;
+
+}
+.present_forum {
+	padding-top: 50px;
+	background: #816c6399;
+	opacity: 0.5;
+	color: black;
+
+}
+.home_btn{
+	margin-top: 500px;
+	margin-left: center;
+}
+
+
 

@@ -2,27 +2,52 @@
 
 class CategoryManager 
 {
+	public static function initializePdo() 
+	{
+	    
+	    try 
+	    {
+	      require __DIR__ .'/config.php';
+	      $bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+	    } catch (PDOException $e) 
+	    {
+	      echo 'erreur : ' . $e->getMessage();
+	      $bdd = null;
+	    }
+	    return $bdd;
+	}
+
+
+	public static function prepareStatement($sql)
+
+	{
+		$bdd = self::initializePdo();
+
+		if($bdd)
+		{
+		
+			try 
+			{
+				$pdoStatement = $bdd->prepare($sql);
+			}
+			catch(PDOException $e)
+			{
+				echo 'erreur : ' . $e->getMessage();
+				
+			}
+			return $pdoStatement;
+		}
+	}
 	
 	
 
 
     public static function getCategory()
     
-    {	try
-	    	{
-	    	/*require __DIR__.'/../config.php';*/
-
-	    	$bdd= new PDO('mysql:host=localhost;dbname=body_shaming_forum;charset=utf8','root','root');
-	    	
-	    	}
-		catch(Exception $e)
-			{
-			    die('Erreur : '.$e->getMessage());
-			}
-
+    {	
+    	$bdd= self::initializePdo();
 		$req = $bdd->query('SELECT * FROM categories');
 		
-
 		return $req;
 
 
@@ -31,25 +56,11 @@ class CategoryManager
 
 	public static function selectCategory($get_categorie)
     
-    {	try
-	    	{
-	    	/*require __DIR__.'/../config.php';*/
+    {	
 
-	    	$bdd= new PDO('mysql:host=localhost;dbname=body_shaming_forum;charset=utf8','root','root');
-	    	
-	    	}
-		catch(Exception $e)
-			{
-			    die('Erreur : '.$e->getMessage());
-			}
-
-		$req = $bdd->prepare('SELECT * FROM categories WHERE id=?');
-		
+		$req = self::prepareStatement('SELECT * FROM categories WHERE id=?');
 		$req->execute(array($get_categorie));
-		//$category_exist=$req->rowCount();
-	
-	    //$category =$req->fetch();
-
+		
 		return $req;
 
 		

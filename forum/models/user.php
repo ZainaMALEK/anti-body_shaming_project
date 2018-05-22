@@ -5,15 +5,13 @@ class User
 
 {
 	
-	public static function initializePdo() 
+	private static function initializePdo() 
 	{
 	    
 	    try 
 	    {
-	      require __DIR__ .'/../config.php';
-	      $pdo = new PDO(
-	        "mysql:dbname=$dbname;host=$host;charset=utf8", $user, $password
-	      );
+	      require __DIR__ .'/config.php';
+	      $pdo = new PDO("mysql:dbname=$dbname;host=$host;charset=utf8", $user, $password);
 	    } catch (PDOException $e) 
 	    {
 	      echo 'erreur : ' . $e->getMessage();
@@ -25,39 +23,40 @@ class User
 	public static function prepareStatement($sql)
 
 	{
-	$pdo = self::initializePdo();
-	if($pdo)
-	{
-	
-		try 
+		$pdo = self::initializePdo();
+
+		if($pdo)
 		{
-			$pdoStatement = $pdo->prepare($sql);
+		
+			try 
+			{
+				$pdoStatement = $pdo->prepare($sql);
+			}
+			catch(PDOException $e)
+			{
+				echo 'erreur : ' . $e->getMessage();
+				
+			}
+			return $pdoStatement;
 		}
-		catch(PDOException $e)
-		{
-			echo 'erreur : ' . $e->getMessage();
-			
-		}
-		return $pdoStatement;
-	}
 	}
 	
-	public static function insert_user($pseudo, $mail, $mdp)
+	public static function insertUser($pseudo, $mail, $mdp)
 
 	{   
-	try
-	{
-		$pdo_statement = self::prepareStatement('INSERT INTO users (username, email, password) VALUES (:username,:email,:password)');
+		try
+		{
+			$pdo_statement = self::prepareStatement('INSERT INTO users (username, email, password) VALUES (:username,:email,:password)');
 
-		
-		$pdo_statement->bindparam(':username', $pseudo) &&
-		$pdo_statement->bindparam(':email', $mail) &&
-		$pdo_statement->bindparam(':password', $mdp)&&
-		$pdo_statement->execute();
-	}
-	catch(PDOException $e)
-	{ $e->getMessage();
-	} 
+			
+			$pdo_statement->bindparam(':username', $pseudo) &&
+			$pdo_statement->bindparam(':email', $mail) &&
+			$pdo_statement->bindparam(':password', $mdp)&&
+			$pdo_statement->execute();
+		}
+		catch(PDOException $e)
+		{ $e->getMessage();
+		} 
 
 		return $pdo_statement;
 	}
@@ -68,23 +67,22 @@ class User
 
 	{
 
-	//$get_id = intval($_GET['id']);
-	$requete_user = self::prepareStatement('SELECT * FROM users WHERE id =:user_id');
-	$requete_user->bindParam(':user_id',$user_id);
-	$requete_user->execute();
-	$user_info = $requete_user->fetch();
-	return $user_info;
+		$requete_user = self::prepareStatement('SELECT * FROM users WHERE id =:user_id');
+		$requete_user->bindParam(':user_id',$user_id);
+		$requete_user->execute();
+		$user_info = $requete_user->fetch();
+		return $user_info;
 	
 	}
 
-	public static function connect_user()
+	public static function connectUser($mailconnect, $mdpconnect)
 
 	{   
-		$mailconnect= htmlspecialchars($_POST['mailconnect']);
-		$mdpconnect= sha1($_POST['mdpconnect']);
-		$requete_user = self::prepareStatement('SELECT * FROM users WHERE email=? AND password=?');
-
-		$requete_user->execute(array($mailconnect, $mdpconnect));
+	
+		$requete_user = self::prepareStatement('SELECT * FROM users WHERE email=:email AND password=:password');
+		$requete_user->bindParam('email', $mailconnect)&&
+		$requete_user->bindParam('password', $mdpconnect)&&
+		$requete_user->execute();
 		return $requete_user;
 	}
 
