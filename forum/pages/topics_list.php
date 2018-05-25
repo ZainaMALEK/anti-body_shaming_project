@@ -5,7 +5,7 @@ require __DIR__.'/../models/TopicManager.php';
 require __DIR__.'/../models/CategoryManager.php';
 
 
-$user_id= htmlspecialchars($_SESSION['id']);
+//$user_id= htmlspecialchars($_SESSION['id']);
 
 
 

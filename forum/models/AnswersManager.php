@@ -2,13 +2,15 @@
 
 class AnswersManager
 {
-	public static function initializePdo() 
+	private static function initializePdo() 
     {
         
         try 
         {
           require __DIR__ .'/config.php';
+
           $bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+
         } catch (PDOException $e) 
         {
           echo 'erreur : ' . $e->getMessage();

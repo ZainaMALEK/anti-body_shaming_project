@@ -4,7 +4,7 @@ require __DIR__.'/../models/CategoryManager.php';
 
 
 //$topic = getTopic();
-if (isset($_GET['categorie'] AND !empty($_GET['categorie'])) 
+if (isset($_GET['categorie']) AND !empty($_GET['categorie']) )
 {
 
 	$categoryselected=htmlspecialchars($_GET['categorie']);
