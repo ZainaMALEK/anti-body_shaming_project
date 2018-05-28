@@ -17,8 +17,8 @@
 	
 	<div class="container page">
 	
-		<h3 class="white">Les topics de la catégorie " <?= $topicList[0]['cat_name'];?> "</h1>
-		<a href="nouveau_topic.php?id=<?=$_SESSION['id']?>&categorie=<?= $topicList[0]['id_categorie'];?>">Créer un nouveau topic</a>
+		<h1 class="white">Les topics de la catégorie " <?= $topicList[1]['cat_name'];?> "</h1>
+		<a href="nouveau_topic.php?id=<?=$_SESSION['id']?>&categorie=<?= $topicList[1]['id_categorie'];?>">Créer un nouveau topic</a>
 
 		<div class="container table-responsive">
 			<table class="table table-bordered table-striped forum_topics">
@@ -38,7 +38,11 @@
 				<tr>
 					<td>
 						<!--a href="selected_topic.php?sujet=<?=$topics['sujet'];?>&id=<?=$topics['id'];?>"-->
-						<a href="selected_topic.php?user=<?=$user_id?>&categorie=<?=$categorie?>&topic_id=<?=$topics['id_topic'];?>">
+						<!--a href="selected_topic.php?user=<?=$user_id?>&categorie=<?=$categorie?>&topic_id=<?=$topics['id_topic'];?>"-->
+						<a href="selected_topic.php?categorie=<?=$categorie?>&topic_id=<?=$topics['id_topic']?>">
+
+
+
 						<?= $topics['sujet'] ;?>
 						</a>
 					</td>

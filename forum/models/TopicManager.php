@@ -50,12 +50,13 @@ class TopicManager
 	}*/
 
 
-	public static function SelectTopic()
+	public static function SelectTopic($get_id)
 	{
 		
-		$get_id = null;
-		$topic = self::prepareStatement('SELECT * FROM f_topics WHERE id=?');
-		$topic->execute(array($get_id));
+		
+		$topic = self::prepareStatement('SELECT * FROM f_topics WHERE id=:id');
+		$topic->bindParam(':id',$get_id);
+		$topic->execute();
 		$topic= $topic->fetch();
 
 		return $topic;
@@ -89,18 +90,22 @@ class TopicManager
 
 		$ins = self::prepareStatement('INSERT INTO f_topics(sujet,contenu,id_categorie,id_createur, notif_creator,created_at ) VALUES(?,?,?,?,?,NOW())');
 		$ins->execute(array($sujet,$contenu,$get_categorie,$idUser,$notif_mail));
+
 		return $ins;
 	}
 
-	public static function selectedTopic($topic_id, $get_categorie)
+	
+	public static function selectedTopic($get_categorie, $topic_id)
 	{
 	
-		$topicselected= self::prepareStatement('SELECT * FROM f_topics WHERE id_topic=:id_topic AND id_categorie=:id_categorie');
-		$topicselected->bindParam(':id_topic', $topic_id);
-		$topicselected->bindParam(':id_categorie', $get_categorie);
-		$topicselected->execute();
-		$topic= $topicselected->fetch();
-		
-		return $topic;
+    $topicselected= self::prepareStatement('SELECT * FROM f_topics WHERE id_topic=:id_topic AND id_categorie=:id_categorie');
+	$topicselected->bindParam(':id_topic', $topic_id);
+	$topicselected->bindParam(':id_categorie', $get_categorie);
+	$topicselected->execute();
+	$topic= $topicselected->fetch();
+	
+	return $topic;
+	
 	}
+
 }

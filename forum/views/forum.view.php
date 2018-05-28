@@ -12,27 +12,27 @@
 
 	
 </head>
-<body class="container home_page">
-	<div class="container ">
+<body class="container-fluid home_page">
+	
 		<div class="row">
 
-			<nav class=" col-sm-1 nav flex-column home_nav">
-			  <a><button type="button" class="btn-outline-warning" data-toggle="modal" data-target="#myModal">Inscription/<br>Connexion</button></a>
-			  <a class="nav-link active" href="pages/connexion.php">Se connecter</a>
-			  <a class="nav-link" href="pages/inscription.php">S'inscrire</a>
+			<nav class=" col-lg-2 nav flex-column home_nav">
+              <a href="pages/inscription.php"><button type="button" class="btn-outline-warning">Inscription</button></a>
+              <a href="pages/connexion.php"><button type="button" class="btn-outline-warning">Connexion</button></a>
+			  
 			  <a class="nav-link" href="pages/topics_list.php">Les derniers topics</a>
 			  <a class="nav-link" href="pages/categories.php">Les catégories</a>
 			</nav>
 
-
-			<section class="col-sm-2 present_forum">
+			<section class="col-lg-2 present_forum">
 				<h4>Pourquoi ce forum?</h4>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                <a class="nav-link" href="pages/categories.php"><button type="button" class="btn-outline-warning btn_home">Accéder au forum</button></a>
 			</section>
 
-			<section class="col-sm-9 home_img img-fluid" >
-				
-			
+			<section class="col-lg-8 img-fluid" >
+                <img class= "home_img" src="css/img/melanie-wasser-233297-unsplash.jpg">
+                
 			</section>
 
 		</div>
@@ -41,26 +41,29 @@
 
 
 
-<div class="modal fade home_modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--div class="modal fade home_modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 
 
-                </button>
+                
                  <h4 class="modal-title gold-text" id="myModalLabel">Inscription/Connexion</h4>
 
             </div>
             <div class="modal-body">
                 <div role="tabpanel">
-                    <!-- Nav tabs -->
+                    <!-- Nav tabs --
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#uploadTab" class="navmodaltab" aria-controls="uploadTab" role="tab" data-toggle="tab">Inscription</a>
                         </li>
                         <li role="presentation"><a href="#browseTab" aria-controls="browseTab" role="tab" data-toggle="tab">Connexion</a>
                         </li>
                     </ul>
-                    <!-- Tab panes -->
+                    <!-- Tab panes --
+
+
+
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="uploadTab">
                             <form method="POST" action="">
@@ -82,7 +85,7 @@
                                         <td><input type="password" name="mdp2"></td>
                                     </tr>
                                 </table>
-                                <!--input type="submit" name="forminscription" value="je m'inscris"-->
+                                
                                 <button type="submit" name="forminscription" value="je m'inscris" >Inscription</button>
 
                             </form>
@@ -108,8 +111,9 @@
                     </div>
                 </div>
             </div>
+            
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                 
             </div>
         </div>
@@ -118,32 +122,6 @@
 
 
 
-	
-
-
-      
-
-	<!--
-	<table class="forum">
-		<tr class="header">
-			<th class="main">Catégories</th>
-			<th class="sub-info">Nombre de topics</th>
-			<th class="sub-info">Dernière réponse</th>
-		</tr>
-<!- on va récuperer toutes les entrées de la table catégories et les stoquer dans la variable $c ->
-		<?php while ($c=$categories->fetch()) {?>
-		<tr>
-			<td class="main">
-
-				<h4><a href="pages/topics_list.php?id_categorie=<?=$c['id']?>"><?= $c['cat_name'] ?></a></h4>
-			</td>
-			<td class="sub-info">Nombres de topics</td>
-			<td class="sub-info">05.03.2018 à 17h18</td>
-			
-		</tr>
-	  <?php }?>
-
-	</table-->
 
 
 <script>
@@ -158,7 +136,7 @@ $('#myModal .save').click(function (e) {
     //$(this).tab('show')
     return false;
 })
-</script>
+</script-->
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

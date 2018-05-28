@@ -22,10 +22,10 @@ if (isset($_POST['forminscription']))
 				if ($mdp==$mdp2)
 				{
 					
-					user::insert_user($pseudo, $mail, $mdp);
+					User::insertUser($pseudo, $mail, $mdp);
 	
 
-					$erreur="Votre compte a bien été créé";
+					$erreur="Votre compte a bien été créé vous pouvez maintenant vous connecter!";
 
 
 				}
@@ -50,9 +50,9 @@ if (isset($_POST['forminscription']))
 	}
 }
 
-if (isset ($erreur))
+/*if (isset ($erreur))
 {
 	echo $erreur;
-}
+}*/
 require ('../views/inscription.view.php');
 

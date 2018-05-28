@@ -13,6 +13,7 @@
 	
 </head>
 <body class="_page">
+	
 	<header class="header_categories">
 		<h1 class="gold-text">Stop Body Shaming Forum</h1>
 	</header>
@@ -28,10 +29,10 @@
 		<div class="col-12">
 
 			<table class=" table table-bordered ">
-				<tr class="header header_categories_table gold-text">
-					<th class="main">Catégories</th>
-					<th class="sub-info">Nombre de topics</th>
-					<th class="sub-info">Dernière réponse</th>
+				<tr class="header header_categories_table">
+					<th class="main gold-text">Catégories</th>
+					<th class="sub-info gold-text">Nombre de topics</th>
+					<th class="sub-info gold-text">Dernière réponse</th>
 				</tr>
 		<!-- on va récuperer toutes les entrées de la table catégories et les stoquer dans la variable $c -->
 				<?php while ($c=$categories->fetch()) {?>

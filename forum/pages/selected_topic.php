@@ -4,47 +4,54 @@ require __DIR__.'/../models/AnswersManager.php';
 require __DIR__.'/../models/User.php';
 require __DIR__.'/../models/TopicManager.php';
 
-$user_id = htmlspecialchars($_GET['user']);
+//$user_id = htmlspecialchars($_GET['user']);
 $topic_id = htmlspecialchars($_GET['topic_id']);
+
 $answers = AnswersManager::getAllAnswers($topic_id);
-$user_info = User::userInfo($user_id);
+
+
         
 
-if ($_GET['user']==$_SESSION['id'])
+//if ($_GET['user']==$_SESSION['id'])
+if (isset($_SESSION['id'])) 
+	
+
 {
 	
-	if (isset($_POST['topic_answer'],$_POST['topic_answer_submit']) AND !empty($_POST['topic_answer'])) {
+	if (isset($_POST['topic_answer'],$_POST['topic_answer_submit']) AND !empty($_POST['topic_answer'])) 
+	{
 		
 		$topic_answer = htmlspecialchars($_POST['topic_answer']);
 
-        AnswersManager::createAnswer($user_id,$topic_id,$topic_answer);    
+    AnswersManager::createAnswer($_SESSION['id'],$topic_id,$topic_answer);    
 
 	}
-	else
-	{
-		$answer_msg = "Votre réponse ne peut pas être vide...";
-	}
+	
 }
 else
 {
 	$answer_msg = "Veuillez vous connecter pour pouvoir répondre à un topic";
 }
 
-if (isset($_GET['topic_id'], $_GET['categorie']) AND!empty($_GET['topic_id'])AND !empty($_GET['categorie']))
-{	
+//if (isset($_GET['topic_id'],$_GET['categorie']) AND !empty($_GET['topic_id'])AND !empty($_GET['categorie']))
+//{	
 	
 	$get_categorie = htmlspecialchars($_GET['categorie']);
+	$topic_id = htmlspecialchars($_GET['topic_id']);
 	
-    $topic= TopicManager::selectedTopic($topic_id, $get_categorie);
+    $topic= TopicManager::selectedTopic($get_categorie, $topic_id);
+
+
 	
-	
-}
+/*}
 
 else
 
 {
 	die("Ce topic n'existe pas");
 
-}
+}*/
+echo $_SESSION['id'];
+
 
 require __DIR__.'/../views/selected_topic.view.php';
