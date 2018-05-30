@@ -30,12 +30,12 @@
       	<?php if (isset($_SESSION['id'])) 
       		{?>
       		
-        <a class="nav-link" href="profil.php?id=".<?=$_SESSION['id'];?>.'"''>Mon Profil</a>
+        <a class="nav-link" href="#">Mon Profil</a>
       <?php  } 
       else {?>
       	<li class="nav-item active">
       	<a class="nav-link" href="connexion.php">Connexion/Inscription</a>
-      	</li>
+        </li>
       <?php } ?>
       </li>
     </ul>
@@ -45,47 +45,49 @@
   </div>
 </nav>
 </header>
-
+<body class="_page">
+	<h3>Tous les topics</h3>
 	
-	<div class="container page">
 	
-		<h1 class="white">Les topics de la catégorie " <?= $topicList[1]['cat_name'];?> "</h1>
-
-		<?php if(isset($_SESSION['id'])){?>
-		<a href="nouveau_topic.php?id=<?=$_SESSION['id']?>&categorie=<?= $_GET['id_categorie'];?>">Créer un nouveau topic</a>
-        <?php }?>
+	
+		
 		<div class="container table-responsive">
 			<table class="table table-bordered table-striped forum_topics">
 				<tr class="header">
 					<th>Sujet</th>
 					<th>Nombre de réponses</th>
-					<th>Dernière réponse</th>
+					
 					<th>Création</th>
 				</tr>
 
 				<?php 
 				
 				
-				foreach ($topicList as $topics) 
+				foreach ($allTopics as $allTopic) 
 				
 				{?>
 				<tr>
 					<td>
-						<!--a href="selected_topic.php?sujet=<?=$topics['sujet'];?>&id=<?=$topics['id'];?>"-->
-						<!--a href="selected_topic.php?user=<?=$user_id?>&categorie=<?=$categorie?>&topic_id=<?=$topics['id_topic'];?>"-->
-						<a href="selected_topic.php?categorie=<?=$categorie?>&topic_id=<?=$topics['id_topic']?>">
+						
+						<a href="selected_topic.php?categorie=<?=$allTopic['id_categorie'];?>&topic_id=<?=$allTopic['id_topic']?>">
 
 
 
-						<?= $topics['sujet'] ;?>
+						<?= $allTopic['sujet'] ;?>
 						</a>
 					</td>
-					<?php $topicId = $topics['id_topic'];
-					$answerNum=AnswersManager::getAnswersNumber($topicId);?>
-
-					<td><?=$answerNum?></td>
-					<td>Time et auteur de la dernière réponse</td>
-					<td><?= $topics['created_at']; ?> par <?=$topics['username'];?></td>
+					<td><?php 
+						$topic_id= $allTopic['id_topic'];
+						$answersNum=AnswersManager::getAnswersNumber($topic_id); 
+						?>
+					<?=$answersNum;?></td>
+					
+					<?php 
+					
+					//$userInfo=User::username($topic_id);
+					?>
+					<td><?= $allTopic['created_at']; ?> par <?=$userInfo['username'];?></td>
+					
 					
 				</tr>
 			  <?php }?>
@@ -93,6 +95,6 @@
 			</table>
 		</div>	
 	
-	</div>	
+	
 </body>
 </html>

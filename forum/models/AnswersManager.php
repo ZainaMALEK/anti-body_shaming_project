@@ -68,6 +68,15 @@ class AnswersManager
     	return $ans;
     }
 
+    public static function getAnswersNumber($topicId)
+    {
+        $answer = self::prepareStatement('SELECT id FROM answers LEFT JOIN f_topics ON f_topics.id_topic=answers.topic_id WHERE id_topic=:id_topic');
+        $answer->bindParam(':id_topic',$topicId);
+        $answer->execute();
+        $answerNum=$answer->rowCount();
+        return $answerNum;
+    }
+
 }
 
 

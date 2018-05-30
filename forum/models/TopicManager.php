@@ -41,25 +41,17 @@ class TopicManager
 	}
 
 
-	/*public static function getTopic ()
-	{
-	
-		
-		$getTopic = $bdd->query('SELECT * FROM f_topics ORDER BY id DESC');
-		return $getTopic;
-	}*/
-
-
 	public static function SelectTopic($get_id)
 	{
 		
 		
-		$topic = self::prepareStatement('SELECT * FROM f_topics WHERE id=:id');
+		$topic = self::prepareStatement('SELECT * FROM f_topics WHERE id_topic=:id');
 		$topic->bindParam(':id',$get_id);
 		$topic->execute();
 		$topic= $topic->fetch();
 
 		return $topic;
+		
 	}
 
 	public static function getTopicsList($categorie)
@@ -108,4 +100,44 @@ class TopicManager
 	
 	}
 
+	public static function getAllTopics(){
+	$bdd= self::initializePdo();
+	$topics=$bdd->query('SELECT * FROM f_topics' );	
+	return $topics;
+	}
+
+
+	public static function Update($get_id, $sujet,$contenu, $id_createur)
+    {
+        
+        $updateTopic = self::prepareStatement('UPDATE f_topics SET id_createur= :id_createur, sujet=:sujet, contenu=:contenu, updated_at=NOW() WHERE id_topic=:id_topic');
+       
+          
+            $updateTopic->bindParam(
+                ':sujet', $sujet);
+        
+            $updateTopic->bindParam(
+                ':contenu', $contenu);
+             $updateTopic->bindParam(
+                ':id_createur', $id_createur);
+              $updateTopic->bindParam(
+                ':id_topic', $get_id);
+          
+            $updateTopic->execute();
+     
+        
+    }
+
+    public static function Delete($get_id)
+    {
+    	
+        $deleteTopic=self::prepareStatement('UPDATE todos SET deleted_at=CURRENT_TIMESTAMP() WHERE id_topic=:get_id');
+        $deleteTopic->bindParam(':get_id', $get_id) &&
+        $deleteTopic->execute();
+       
+    }
+
+	
+
 }
+

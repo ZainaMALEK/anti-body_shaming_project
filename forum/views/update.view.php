@@ -46,53 +46,44 @@
 </nav>
 </header>
 
-	
-	<div class="container page">
-	
-		<h1 class="white">Les topics de la catégorie " <?= $topicList[1]['cat_name'];?> "</h1>
+	<form method="POST" action="">
+		<table>
+			<tr class="header">
+				<th>Editez votre topic</th>
+				<th></th>
+			</tr>
+			<!--tr>
+				<td>Categorie</td>
+				<td><?=$categorie ?></td>
+			</tr-->
+			<tr>
+				<td>Modifier le sujet</td>
+				<td><input type="text" name="topic_sujet" maxlength="100" placeholder="<?=$topic['sujet'];?>"></td>
+			</tr>
+		
+			<tr>
+				<td>Modifier le contenu</td>
+				<td><textarea name="topic_contenu"><?=$topic['contenu'];?></textarea></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2"><input type="submit" name="topic_update" value="Editer ce topic"></td>
+				<td colspan="2"><input type="submit" name="topic_delete" value="Supprimer ce topic"></td>
+			</tr>
 
-		<?php if(isset($_SESSION['id'])){?>
-		<a href="nouveau_topic.php?id=<?=$_SESSION['id']?>&categorie=<?= $_GET['id_categorie'];?>">Créer un nouveau topic</a>
-        <?php }?>
-		<div class="container table-responsive">
-			<table class="table table-bordered table-striped forum_topics">
-				<tr class="header">
-					<th>Sujet</th>
-					<th>Nombre de réponses</th>
-					<th>Dernière réponse</th>
-					<th>Création</th>
-				</tr>
+			<?php if(isset($error)) 
+			   { ?>
 
-				<?php 
-				
-				
-				foreach ($topicList as $topics) 
-				
-				{?>
-				<tr>
-					<td>
-						<!--a href="selected_topic.php?sujet=<?=$topics['sujet'];?>&id=<?=$topics['id'];?>"-->
-						<!--a href="selected_topic.php?user=<?=$user_id?>&categorie=<?=$categorie?>&topic_id=<?=$topics['id_topic'];?>"-->
-						<a href="selected_topic.php?categorie=<?=$categorie?>&topic_id=<?=$topics['id_topic']?>">
+			<tr>
+				<td colspan="2">
+					<?= $topic_error ?>
+				</td>
+			
+			</tr>
+				<?php } ?>
 
+		</table>
+	</form>
 
-
-						<?= $topics['sujet'] ;?>
-						</a>
-					</td>
-					<?php $topicId = $topics['id_topic'];
-					$answerNum=AnswersManager::getAnswersNumber($topicId);?>
-
-					<td><?=$answerNum?></td>
-					<td>Time et auteur de la dernière réponse</td>
-					<td><?= $topics['created_at']; ?> par <?=$topics['username'];?></td>
-					
-				</tr>
-			  <?php }?>
-
-			</table>
-		</div>	
-	
-	</div>	
 </body>
 </html>

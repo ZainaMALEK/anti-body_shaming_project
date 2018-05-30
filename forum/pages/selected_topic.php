@@ -12,7 +12,7 @@ $answers = AnswersManager::getAllAnswers($topic_id);
 
         
 
-//if ($_GET['user']==$_SESSION['id'])
+
 if (isset($_SESSION['id'])) 
 	
 
@@ -23,7 +23,7 @@ if (isset($_SESSION['id']))
 		
 		$topic_answer = htmlspecialchars($_POST['topic_answer']);
 
-    AnswersManager::createAnswer($_SESSION['id'],$topic_id,$topic_answer);    
+    	AnswersManager::createAnswer($_SESSION['id'],$topic_id,$topic_answer);    
 
 	}
 	
@@ -33,8 +33,7 @@ else
 	$answer_msg = "Veuillez vous connecter pour pouvoir répondre à un topic";
 }
 
-//if (isset($_GET['topic_id'],$_GET['categorie']) AND !empty($_GET['topic_id'])AND !empty($_GET['categorie']))
-//{	
+
 	
 	$get_categorie = htmlspecialchars($_GET['categorie']);
 	$topic_id = htmlspecialchars($_GET['topic_id']);
@@ -43,15 +42,6 @@ else
 
 
 	
-/*}
-
-else
-
-{
-	die("Ce topic n'existe pas");
-
-}*/
-echo $_SESSION['id'];
 
 
 require __DIR__.'/../views/selected_topic.view.php';

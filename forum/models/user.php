@@ -86,4 +86,17 @@ class User
 		return $requete_user;
 	}
 
+	public static function username($topic_id)
+
+	{
+
+		$requete_user = self::prepareStatement("SELECT username FROM users LEFT JOIN f_topics ON f_topics.id_createur=users.id ");
+
+		$requete_user->execute();
+		$user_info = $requete_user->fetch();
+		return $user_info;
+	
+	}
+
+
 } 

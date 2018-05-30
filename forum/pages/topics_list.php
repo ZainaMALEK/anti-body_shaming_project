@@ -3,6 +3,7 @@ session_start();
 
 require __DIR__.'/../models/TopicManager.php';
 require __DIR__.'/../models/CategoryManager.php';
+require __DIR__.'/../models/AnswersManager.php';
 
 
 //$user_id= htmlspecialchars($_SESSION['id']);

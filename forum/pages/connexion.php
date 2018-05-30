@@ -18,9 +18,10 @@ if (isset($_POST['formconnexion']))
 			{
 			 	$userinfo = $requete_user->fetch();
 			 	$_SESSION['id'] = $userinfo['id'];
-			 	$_SESSION['pseudo'] = $userinfo['pseudo'];
-			 	$_SESSION['mail'] = $userinfo['mail'];
-			 	header("Location: profil.php?id=".$_SESSION['id']);
+			 	$_SESSION['username'] = $userinfo['username'];
+			 	$_SESSION['email'] = $userinfo['email'];
+			 	//header("Location: profil.php?id=".$_SESSION['id']);
+			 	header("Location: ../index.php?id=".$_SESSION['id']);
 			}
 			else
 			{
